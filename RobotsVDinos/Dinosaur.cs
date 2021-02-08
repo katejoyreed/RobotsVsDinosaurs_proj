@@ -22,15 +22,25 @@ namespace RobotsVDinos
 
         //member methods
 
-        public void Attack(double energy, double attackPower) 
+        public void Attack() 
         {
-            
+            if (energy >= 10) 
+            {
+                Console.WriteLine($"The attack did {attackPower} damage!");
+                energy = (energy - 10);
+            }
+
+            else 
+            {
+                Console.WriteLine("Not enough energy to attack!");
+            }
             
         }
 
-        public void GetAttacked(double hitPoints) 
+        public void TakeDamage(Weapon weapon) 
         {
-            
+            hitPoints = (hitPoints - weapon.attackPower);
+            Console.WriteLine($"Took {weapon.attackPower} damage!");
         }
     }
 }

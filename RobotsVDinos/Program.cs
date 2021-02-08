@@ -27,6 +27,10 @@ namespace RobotsVDinos
             battlefield.PopulateHerd(dinosaur1);
             battlefield.PopulateHerd(dinosaur2);
             battlefield.PopulateHerd(dinosaur3);
+
+            dinosaur1.Attack();
+            dinosaur1.Attack();
+            dinosaur1.Attack();
             
             
 
