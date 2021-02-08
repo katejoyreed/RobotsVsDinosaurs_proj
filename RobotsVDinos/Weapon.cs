@@ -6,8 +6,8 @@ namespace RobotsVDinos
 {
     class Weapon
     {//member variables
-        string type;
-        double attackPower;
+        public string type;
+        public double attackPower;
 
         //ctor
         public Weapon(string type, double attackPower)

@@ -29,10 +29,19 @@ namespace RobotsVDinos
             battlefield.PopulateHerd(dinosaur3);
 
             dinosaur1.Attack();
+            robot1.TakeDamage(dinosaur1);
+            robot1.Attack(robot1.weapon);
+            dinosaur1.TakeDamage(robot1.weapon);
             dinosaur1.Attack();
+            robot1.TakeDamage(dinosaur1);
+            robot1.Attack(robot1.weapon);
+            dinosaur1.TakeDamage(robot1.weapon);
             dinosaur1.Attack();
-            
-            
+            robot1.TakeDamage(dinosaur1);
+            robot1.Attack(robot1.weapon);
+            dinosaur1.TakeDamage(robot1.weapon);
+
+
 
 
         }

@@ -27,14 +27,20 @@ namespace RobotsVDinos
 
         //member methods
 
-        public void Attack(double powerLevel, Weapon weapon) 
+        public void Attack(Weapon weapon) 
         {
-        
+            if (powerLevel >= 10)
+            {
+                Console.WriteLine($"The attack did {weapon.attackPower} damage!");
+                powerLevel = (powerLevel - 10);
+            }
         }
 
-        public void GetAttacked(double hitPoints) 
+        public double TakeDamage(Dinosaur dinosaur) 
         {
-            
+            hitPoints = (hitPoints - dinosaur.attackPower);
+            Console.WriteLine($"Took {dinosaur.attackPower} damage!");
+            return hitPoints;
         }
     }
 }

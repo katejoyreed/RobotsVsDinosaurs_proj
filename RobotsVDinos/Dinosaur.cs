@@ -37,10 +37,11 @@ namespace RobotsVDinos
             
         }
 
-        public void TakeDamage(Weapon weapon) 
+        public double TakeDamage(Weapon weapon) 
         {
             hitPoints = (hitPoints - weapon.attackPower);
             Console.WriteLine($"Took {weapon.attackPower} damage!");
+            return hitPoints;
         }
     }
 }
