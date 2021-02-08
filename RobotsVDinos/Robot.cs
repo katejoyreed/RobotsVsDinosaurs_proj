@@ -7,24 +7,34 @@ namespace RobotsVDinos
     class Robot
     {
         //member variables
-        string robotName;
-        double hitPoints;
-        double powerLevel;
-        Weapon weapon;
-        double attackPower;
+        public string robotName;
+        public double hitPoints;
+        public double powerLevel;
+        public Weapon weapon;
+        
 
         //ctor
-        public Robot(string robotName, double hitPoints, double powerLevel, Weapon weapon, double attackPower)
+        public Robot(string robotName, double hitPoints, double powerLevel, Weapon weapon)
         {
             this.robotName = robotName;
             this.hitPoints = hitPoints;
             this.powerLevel = powerLevel;
             this.weapon = weapon;
-            this.attackPower = attackPower;
+            
 
         }
 
 
         //member methods
+
+        public void Attack(double powerLevel, Weapon weapon) 
+        {
+        
+        }
+
+        public void GetAttacked(double hitPoints) 
+        {
+            
+        }
     }
 }

@@ -6,10 +6,10 @@ namespace RobotsVDinos
 {
     class Dinosaur
     {//member variables
-        string type;
-        double hitPoints;
-        double energy;
-        double attackPower;
+        public string type;
+        public double hitPoints;
+        public double energy;
+        public double attackPower;
 
         //ctor
         public Dinosaur(string type, double hitPoints, double energy, double attackPower)
@@ -21,5 +21,16 @@ namespace RobotsVDinos
         }
 
         //member methods
+
+        public void Attack(double energy, double attackPower) 
+        {
+            
+            
+        }
+
+        public void GetAttacked(double hitPoints) 
+        {
+            
+        }
     }
 }
