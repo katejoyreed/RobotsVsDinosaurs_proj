@@ -6,7 +6,7 @@ namespace RobotsVDinos
 {
     class Fleet
     {//member variables
-        List<Robot> fleet;
+       public List<Robot> fleet;
 
         //ctor
         public Fleet()
@@ -15,5 +15,24 @@ namespace RobotsVDinos
         }
 
         //member methods
+        public Robot CreateRobot(string robotName, double hitPoints, double powerLevel, Weapon weapon)
+        {
+            Robot robot = new Robot(robotName, hitPoints, powerLevel, weapon);
+            return robot;
+        }
+
+        public void PopulateFleet(Robot robot)
+        {
+            fleet.Add(robot);
+        }
+
+
     }
+
+
+
+
+
+
+
 }
