@@ -6,12 +6,12 @@ namespace RobotsVDinos
 {
     class Fleet
     {//member variables
-        List<Robot> robots;
+        List<Robot> fleet;
 
         //ctor
         public Fleet()
         {
-            robots = new List<Robot>();
+            fleet = new List<Robot>();
         }
 
         //member methods

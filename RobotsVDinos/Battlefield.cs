@@ -6,17 +6,31 @@ namespace RobotsVDinos
 {
     class Battlefield
     {   //member variables
-        List<Fleet> fleet;
-        List<Herd> herd;
+       public List<Robot> fleet;
+       public List<Dinosaur> herd;
 
         //ctor
         public Battlefield()
         {
-            fleet = new List<Fleet>();
-            herd = new List<Herd>();
+            fleet = new List<Robot>();
+            herd = new List<Dinosaur>();
         }
 
 
         //member methods
-    }
+
+        public Robot CreateRobot(string robotName, double hitPoints, double powerLevel, Weapon weapon) 
+        {
+            Robot robot = new Robot(robotName, hitPoints, powerLevel, weapon);
+            return robot;
+        }
+
+
+        public void PopulateFleet(Robot robot)
+        {
+            fleet.Add(robot);
+        }
+
+
+    } 
 }
