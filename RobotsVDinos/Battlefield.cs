@@ -31,6 +31,15 @@ namespace RobotsVDinos
             fleet.Add(robot);
         }
 
+        public Dinosaur CreateDinosaur(string type, double hitPoints, double energy, double attackPower) 
+        {
+            Dinosaur dinosaur = new Dinosaur(type, hitPoints, energy, attackPower);
+            return dinosaur;
+        }
 
+        public void PopulateHerd(Dinosaur dinosaur) 
+        {
+            herd.Add(dinosaur);
+        }
     } 
 }
