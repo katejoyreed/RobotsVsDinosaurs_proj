@@ -6,10 +6,14 @@ namespace RobotsVDinos
 {
     class Herd
     {//member variables
-
+        List<Dinosaur> dinosaurs;
 
         //ctor
-
+        public Herd()
+        {
+            dinosaurs = new List<Dinosaur>();
+        }
+        
 
         //member methods
     }
