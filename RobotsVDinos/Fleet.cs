@@ -26,6 +26,14 @@ namespace RobotsVDinos
             fleet.Add(robot);
         }
 
+        public void RemoveFromFleet(Robot robot) 
+        {
+            if (robot.hitPoints == 0) 
+            {
+                fleet.Remove(robot);
+            }
+        }
+
 
     }
 

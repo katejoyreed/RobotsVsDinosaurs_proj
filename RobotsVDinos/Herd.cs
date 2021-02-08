@@ -27,5 +27,14 @@ namespace RobotsVDinos
         {
             herd.Add(dinosaur);
         }
+
+        public void RemoveFromHerd(Dinosaur dinosaur) 
+        {
+            if (dinosaur.hitPoints == 0)
+            {
+                herd.Remove(dinosaur);
+
+            }
+        }
     }
 }
