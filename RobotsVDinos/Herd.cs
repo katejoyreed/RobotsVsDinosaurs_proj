@@ -39,5 +39,16 @@ namespace RobotsVDinos
 
             }
         }
+
+        public void RunHerd() 
+        {
+            Dinosaur dino1 = CreateDinosaur("Velociraptor", 100, 100, 25);
+            Dinosaur dino2 = CreateDinosaur("Allosaurus", 120, 100, 35);
+            Dinosaur dino3 = CreateDinosaur("Carnotaurus", 140, 100, 40);
+
+            PopulateHerd(dino1);
+            PopulateHerd(dino2);
+            PopulateHerd(dino3);
+        }
     }
 }

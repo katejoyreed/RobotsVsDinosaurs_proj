@@ -37,7 +37,20 @@ namespace RobotsVDinos
             }
         }
 
-
+        public void RunFleet()
+        {
+            Armory armory = new Armory();
+            armory.RunArmory();
+            Weapon weapon1 = armory.ChooseWeapon1();
+            Robot robot1 = CreateRobot("G.U.N.T.E.R", 120, 100, weapon1);
+            PopulateFleet(robot1);
+            Weapon weapon2 = armory.ChooseWeapon2();
+            Robot robot2 = CreateRobot("Iron Giant", 140, 100, weapon2);
+            PopulateFleet(robot2);
+            Weapon weapon3 = armory.ChooseWeapon3();
+            Robot robot3 = CreateRobot("Maschinenmensch", 160, 100, weapon3);
+            PopulateFleet(robot3);
+        }
     }
 
 

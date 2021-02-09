@@ -132,6 +132,17 @@ namespace RobotsVDinos
             }
         }
 
+        public void RunArmory() 
+        {
+            Weapon weapon1 = CreateWeapon("Sword", 25);
+            Weapon weapon2 = CreateWeapon("Revolver", 35);
+            Weapon weapon3 = CreateWeapon("Cannon", 40);
+
+            PopulateArmory(weapon1);
+            PopulateArmory(weapon2);
+            PopulateArmory(weapon3);
+        }
+
 
     }
 }
