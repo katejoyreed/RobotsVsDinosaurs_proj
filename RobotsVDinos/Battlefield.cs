@@ -23,18 +23,40 @@ namespace RobotsVDinos
             battleHerd.PopulateHerd(allosaurus);
             battleHerd.PopulateHerd(carnotaurus);
 
-
-            Weapon sword = new Weapon("sword", 25);
-            Weapon slingshot = new Weapon("slingshot", 20);
-            Weapon revolver = new Weapon("revolver", 30);
-
             Fleet battleFleet = new Fleet();
-            Robot gunter = battleFleet.CreateRobot("G.U.N.T.E.R", 120, 100, sword);
-            Robot ironGiant = battleFleet.CreateRobot("Iron Giant", 140, 100, slingshot);
-            Robot maschinenmensch = battleFleet.CreateRobot("Maschinenmensch", 140, 100, revolver);
+            Armory armory = new Armory();
+
+
+            Weapon sword = armory.CreateWeapon("Sword", 25);
+            Weapon revolver = armory.CreateWeapon("Revolver", 35);
+            Weapon cannon = armory.CreateWeapon("Cannon", 40);
+            
+            
+            armory.PopulateArmory(sword);
+            armory.PopulateArmory(revolver);
+            armory.PopulateArmory(cannon);
+
+            Weapon weapon1 = armory.ChooseWeapon1();
+            Robot gunter = battleFleet.CreateRobot("G.U.N.T.E.R", 120, 100, weapon1);
             battleFleet.PopulateFleet(gunter);
+
+            Weapon weapon2 = armory.ChooseWeapon2();
+            Robot ironGiant = battleFleet.CreateRobot("Iron Giant", 100, 100, weapon2);
             battleFleet.PopulateFleet(ironGiant);
+
+            Weapon weapon3 = armory.ChooseWeapon3();
+            Robot maschinenmensch = battleFleet.CreateRobot("Maschinenmensch", 110, 100, weapon3);
             battleFleet.PopulateFleet(maschinenmensch);
+
+
+            
+           
+
+
+           
+
+            
+            
 
             
 
@@ -46,7 +68,7 @@ namespace RobotsVDinos
                 currentRobot.RobotUserPrompt(currentDino, battleHerd, currentRobot, battleFleet);
             }
 
-            //the problem is that the loop is contuing one round beyond the objects being knocked out
+            
             
 
             while (battleHerd.herd.Contains(allosaurus) && battleFleet.fleet.Contains(ironGiant))

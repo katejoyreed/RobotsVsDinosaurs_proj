@@ -7,7 +7,7 @@ namespace RobotsVDinos
     class Fleet
     {//member variables
        public List<Robot> fleet;
-        Robot currentRobot;
+        
 
         //ctor
         public Fleet()

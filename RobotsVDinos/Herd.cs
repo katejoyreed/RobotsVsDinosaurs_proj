@@ -7,7 +7,7 @@ namespace RobotsVDinos
     class Herd
     {//member variables
         public List<Dinosaur> herd;
-        Dinosaur currentDino;
+        
 
         //ctor
         public Herd()
