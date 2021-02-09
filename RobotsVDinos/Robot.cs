@@ -53,39 +53,55 @@ namespace RobotsVDinos
         
         }
 
-        public void RobotUserPrompt(Dinosaur dinosaur, Herd herd) 
+        public void RobotUserPrompt(Dinosaur dinosaur, Herd herd, Robot robot, Fleet fleet) 
         {
-            Console.WriteLine($"Would you like {robotName} to attack or recharge?");
-            string answer = Console.ReadLine();
-           
-            if (answer.Equals("attack", StringComparison.OrdinalIgnoreCase)) 
+            if (robot.hitPoints <= 0)
             {
-                Attack(weapon);
-                dinosaur.TakeDamage(weapon, dinosaur, herd);
-                Console.WriteLine($"{robotName} has {powerLevel} power remaining!");
-            }
-
-            else if (answer.Equals("recharge", StringComparison.OrdinalIgnoreCase)) 
-            {
-                if (powerLevel < 100)
-                {
-                    Recharge();
-                }
-
-                else 
-                {
-                    Console.WriteLine($"{robotName} already has full power.");
-                    Console.WriteLine("Please make a valid selction");
-                    RobotUserPrompt(dinosaur, herd);
-                }
-                    
+                fleet.RemoveFromFleet(robot);
             }
 
             else 
             {
-                Console.WriteLine("Please make a valid selection");
-                RobotUserPrompt(dinosaur, herd);
+                Console.WriteLine($"Would you like {robotName} to attack or recharge?");
+                string answer = Console.ReadLine();
+
+                if (answer.Equals("attack", StringComparison.OrdinalIgnoreCase))
+                {
+                    Attack(weapon);
+                    dinosaur.TakeDamage(weapon, dinosaur, herd);
+                    Console.WriteLine($"{robotName} has {powerLevel} power remaining!");
+                }
+                else if (answer.Equals("recharge", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (powerLevel < 100)
+                    {
+                        Recharge();
+                    }
+
+                    else
+                    {
+                        Console.WriteLine($"{robotName} already has full power.");
+                        Console.WriteLine("Please make a valid selction");
+                        RobotUserPrompt(dinosaur, herd, robot, fleet);
+                    }
+
+                }
+
+                else
+                {
+                    Console.WriteLine("Please make a valid selection");
+                    RobotUserPrompt(dinosaur, herd, robot, fleet);
+                }
+
             }
+
+            
+           
+            
+
+            
+
+            
         }
     }
 }

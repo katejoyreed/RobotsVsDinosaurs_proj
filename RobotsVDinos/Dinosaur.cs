@@ -55,40 +55,56 @@ namespace RobotsVDinos
             energy = (energy + 10);
         }
 
-        public void DinosaurUserPrompt(Robot robot, Dinosaur dinosaur, Fleet fleet) 
+        public void DinosaurUserPrompt(Robot robot, Dinosaur dinosaur, Fleet fleet, Herd herd) 
         {
-
-            Console.WriteLine($"Would you like {type} to attack or rest?");
-            string answer = Console.ReadLine();
-
-            if (answer.Equals("attack", StringComparison.OrdinalIgnoreCase))
+            if (dinosaur.hitPoints <= 0)
             {
-                Attack();
-                robot.TakeDamage(dinosaur, robot, fleet);
-                Console.WriteLine($"{dinosaur.type} has {energy} energy remaining");
+                herd.RemoveFromHerd(dinosaur);
             }
 
-            else if (answer.Equals("rest", StringComparison.OrdinalIgnoreCase))
+            else 
             {
-                if (energy < 100)
+                Console.WriteLine($"Would you like {type} to attack or rest?");
+                string answer = Console.ReadLine();
+
+                if (answer.Equals("attack", StringComparison.OrdinalIgnoreCase))
                 {
-                    Rest();
+                    Attack();
+                    robot.TakeDamage(dinosaur, robot, fleet);
+                    Console.WriteLine($"{dinosaur.type} has {energy} energy remaining");
+                }
+
+                else if (answer.Equals("rest", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (energy < 100)
+                    {
+                        Rest();
+                    }
+
+                    else
+                    {
+                        Console.WriteLine($"{type} already has full energy.");
+                        Console.WriteLine("Please make a valid selction");
+                        DinosaurUserPrompt(robot, dinosaur, fleet, herd);
+                    }
+
                 }
 
                 else
                 {
-                    Console.WriteLine($"{type} already has full energy.");
-                    Console.WriteLine("Please make a valid selction");
-                    DinosaurUserPrompt(robot, dinosaur, fleet);
+                    Console.WriteLine("Please make a valid selection");
+                    DinosaurUserPrompt(robot, dinosaur, fleet, herd);
                 }
 
-            }
 
-            else
-            {
-                Console.WriteLine("Please make a valid selection");
-                DinosaurUserPrompt(robot, dinosaur, fleet);
             }
+            
+
+            
+
+           
+
+            
         }
     }
 }

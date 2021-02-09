@@ -16,8 +16,8 @@ namespace RobotsVDinos
         public void RunBattlefield()
         {
             Herd battleHerd = new Herd();
-            Dinosaur velociraptor = battleHerd.CreateDinosaur("Velociraptor", 100, 100, 20);
-            Dinosaur allosaurus = battleHerd.CreateDinosaur("Allosaurus", 110, 100, 25);
+            Dinosaur velociraptor = battleHerd.CreateDinosaur("Velociraptor", 100, 100, 30);
+            Dinosaur allosaurus = battleHerd.CreateDinosaur("Allosaurus", 110, 100, 35);
             Dinosaur carnotaurus = battleHerd.CreateDinosaur("Carnotaurus", 120, 100, 35);
             battleHerd.PopulateHerd(velociraptor);
             battleHerd.PopulateHerd(allosaurus);
@@ -36,32 +36,48 @@ namespace RobotsVDinos
             battleFleet.PopulateFleet(ironGiant);
             battleFleet.PopulateFleet(maschinenmensch);
 
-            Dinosaur currentDino = battleHerd.herd[0];
-            Robot currentRobot = battleFleet.fleet[0];
+            
 
-            while (currentDino.hitPoints > 0 && currentRobot.hitPoints > 0) 
+            while (battleHerd.herd.Contains(velociraptor) && battleFleet.fleet.Contains(gunter)) 
             {
-                currentDino.DinosaurUserPrompt(currentRobot, currentDino, battleFleet);
-                currentRobot.RobotUserPrompt(currentDino, battleHerd);
+                Dinosaur currentDino = battleHerd.herd[0];
+                Robot currentRobot = battleFleet.fleet[0];
+                currentDino.DinosaurUserPrompt(currentRobot, currentDino, battleFleet, battleHerd);
+                currentRobot.RobotUserPrompt(currentDino, battleHerd, currentRobot, battleFleet);
             }
 
-            if (currentDino.hitPoints > 0)
+            //the problem is that the loop is contuing one round beyond the objects being knocked out
+            
+
+            while (battleHerd.herd.Contains(allosaurus) && battleFleet.fleet.Contains(ironGiant))
             {
-                Console.WriteLine($"{currentDino} wins this round!");
+                Dinosaur currentDino = battleHerd.herd[0];
+                Robot currentRobot = battleFleet.fleet[0];
+                currentDino.DinosaurUserPrompt(currentRobot, currentDino, battleFleet, battleHerd);
+                currentRobot.RobotUserPrompt(currentDino, battleHerd, currentRobot, battleFleet);
             }
+
+
+            while (battleHerd.herd.Contains(carnotaurus) && battleFleet.fleet.Contains(maschinenmensch))
+            {
+                Dinosaur currentDino = battleHerd.herd[0];
+                Robot currentRobot = battleFleet.fleet[0];
+                currentDino.DinosaurUserPrompt(currentRobot, currentDino, battleFleet, battleHerd);
+                currentRobot.RobotUserPrompt(currentDino, battleHerd, currentRobot, battleFleet);
+
+            }
+            
+            if (battleHerd.herd.Contains(carnotaurus)) 
+            {
+                Console.WriteLine("Dinosaurs win!");
+            }
+
             else 
             {
-                Console.WriteLine($"{currentRobot} wins this round!");
-            }
-
-            while (currentDino.hitPoints > 0 && currentRobot.hitPoints > 0)
-            {
-                currentDino.DinosaurUserPrompt(currentRobot, currentDino, battleFleet);
-                currentRobot.RobotUserPrompt(currentDino, battleHerd);
+                Console.WriteLine("Robots win!");
             }
             
 
-            Console.ReadLine();
 
         }
 
