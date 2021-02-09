@@ -28,9 +28,10 @@ namespace RobotsVDinos
 
         public void RemoveFromFleet(Robot robot) 
         {
-            if (robot.hitPoints == 0) 
+            if (robot.hitPoints <= 0) 
             {
                 fleet.Remove(robot);
+                Console.WriteLine($"{robot.robotName} has been removed from battle!");
             }
         }
 

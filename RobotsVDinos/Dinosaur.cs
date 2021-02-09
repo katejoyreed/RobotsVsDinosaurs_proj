@@ -26,7 +26,7 @@ namespace RobotsVDinos
         {
             if (energy >= 10) 
             {
-                Console.WriteLine($"The attack did {attackPower} damage!");
+                Console.WriteLine($"{type}'s attack did {attackPower} damage!");
                 energy = (energy - 10);
             }
 
@@ -37,11 +37,53 @@ namespace RobotsVDinos
             
         }
 
-        public double TakeDamage(Weapon weapon) 
+        public void TakeDamage(Weapon weapon) 
         {
             hitPoints = (hitPoints - weapon.attackPower);
-            Console.WriteLine($"Took {weapon.attackPower} damage!");
-            return hitPoints;
+            Console.WriteLine($"{type} took {weapon.attackPower} damage!");
+            Console.WriteLine($"{type} has {hitPoints} HP remaining!");
+            
+        }
+
+        public void Rest() 
+        {
+            energy = (energy + 10);
+        }
+
+        public void DinosaurUserPrompt(Robot robot, Dinosaur dinosaur) 
+        {
+
+            Console.WriteLine($"Would you like {type} to attack or rest?");
+            string answer = Console.ReadLine();
+
+            if (answer.Equals("attack", StringComparison.OrdinalIgnoreCase))
+            {
+                Attack();
+                robot.TakeDamage(dinosaur);
+                Console.WriteLine($"{dinosaur.type} has {energy} energy remaining");
+            }
+
+            else if (answer.Equals("rest", StringComparison.OrdinalIgnoreCase))
+            {
+                if (energy < 100)
+                {
+                    Rest();
+                }
+
+                else
+                {
+                    Console.WriteLine($"{type} already has full energy.");
+                    Console.WriteLine("Please make a valid selction");
+                    DinosaurUserPrompt(robot, dinosaur);
+                }
+
+            }
+
+            else
+            {
+                Console.WriteLine("Please make a valid selection");
+                DinosaurUserPrompt(robot, dinosaur);
+            }
         }
     }
 }

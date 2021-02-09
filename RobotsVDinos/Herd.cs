@@ -30,9 +30,10 @@ namespace RobotsVDinos
 
         public void RemoveFromHerd(Dinosaur dinosaur) 
         {
-            if (dinosaur.hitPoints == 0)
+            if (dinosaur.hitPoints <= 0)
             {
                 herd.Remove(dinosaur);
+                Console.WriteLine($"{dinosaur.type} has been removed from battle!");
 
             }
         }

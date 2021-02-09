@@ -18,14 +18,14 @@ namespace RobotsVDinos
         {
             Herd battleHerd = new Herd();
             Dinosaur velociraptor = battleHerd.CreateDinosaur("Velociraptor", 100, 100, 20);
-            Dinosaur allosaur = battleHerd.CreateDinosaur("Allosaur", 110, 100, 25);
+            Dinosaur allosaurus = battleHerd.CreateDinosaur("Allosaurus", 110, 100, 25);
             Dinosaur carnotaurus = battleHerd.CreateDinosaur("Carnotaurus", 120, 100, 35);
             battleHerd.PopulateHerd(velociraptor);
-            battleHerd.PopulateHerd(allosaur);
+            battleHerd.PopulateHerd(allosaurus);
             battleHerd.PopulateHerd(carnotaurus);
 
-            Weapon sword = new Weapon("sword", 15);
-            Weapon slingshot = new Weapon("slingshot", 10);
+            Weapon sword = new Weapon("sword", 25);
+            Weapon slingshot = new Weapon("slingshot", 20);
             Weapon revolver = new Weapon("revolver", 30);
 
             Fleet battleFleet = new Fleet();
@@ -36,6 +36,43 @@ namespace RobotsVDinos
             battleFleet.PopulateFleet(ironGiant);
             battleFleet.PopulateFleet(maschinenmensch);
 
+            while (gunter.hitPoints > 0 && velociraptor.hitPoints > 0)
+            {
+                gunter.RobotUserPrompt(velociraptor);
+                
+                velociraptor.DinosaurUserPrompt(gunter, velociraptor);
+                
+            }
+
+            battleFleet.RemoveFromFleet(gunter);
+            battleHerd.RemoveFromHerd(velociraptor);
+
+            if (gunter.hitPoints > 0) 
+            { 
+                while (gunter.hitPoints > 0 && allosaurus.hitPoints > 0) 
+                {
+                    gunter.RobotUserPrompt(allosaurus);
+                    allosaurus.DinosaurUserPrompt(gunter, allosaurus);
+                }
+
+                battleFleet.RemoveFromFleet(gunter);
+                battleHerd.RemoveFromHerd(allosaurus);
+            }
+
+            else 
+            {
+                while (velociraptor.hitPoints < 0 && ironGiant.hitPoints < 0) 
+                {
+                    ironGiant.RobotUserPrompt(velociraptor);
+                    velociraptor.DinosaurUserPrompt(ironGiant, velociraptor);
+                }
+                battleFleet.RemoveFromFleet(ironGiant);
+                battleHerd.RemoveFromHerd(velociraptor);
+            }
+
+
+
+            Console.ReadLine();
 
         }
 
