@@ -24,24 +24,28 @@ namespace RobotsVDinos
             armory.Add(weapon);
         }
 
+         
+
         public Weapon ChooseWeapon1()
         {
-            Console.WriteLine("Choose a weapon for your first robot by typing a number.");
+            Console.WriteLine("Choose a weapon for your first robot by typing the name of the weapon.");
             Console.WriteLine($"1. {armory[0].type}, attack power: {armory[0].attackPower}");
             Console.WriteLine($"2. {armory[1].type}, attack power: {armory[1].attackPower}");
             Console.WriteLine($"3. {armory[2].type}, attack power: {armory[2].attackPower}");
 
-            if (Console.ReadLine().Contains("1"))
+            string userInput = Console.ReadLine();
+
+            if (userInput.Contains($"{armory[0].type}", StringComparison.OrdinalIgnoreCase))
             {
                 Weapon weapon = armory[0];
                 return weapon;
             }
-            else if (Console.ReadLine().Contains("2"))
+            else if (userInput.Contains($"{armory[1].type}", StringComparison.OrdinalIgnoreCase))
             {
                 Weapon weapon = armory[1];
                 return weapon;
             }
-            else if (Console.ReadLine().Contains("3"))
+            else if (userInput.Contains($"{armory[2].type}", StringComparison.OrdinalIgnoreCase))
             {
                 Weapon weapon = armory[2];
                 return weapon;
@@ -60,22 +64,24 @@ namespace RobotsVDinos
         }
         public Weapon ChooseWeapon2()
         {
-            Console.WriteLine("Choose a weapon for your second robot by typing a number.");
+            Console.WriteLine("Choose a weapon for your second robot by typing the name of the weapon.");
             Console.WriteLine($"1. {armory[0].type}, attack power: {armory[0].attackPower}");
             Console.WriteLine($"2. {armory[1].type}, attack power: {armory[1].attackPower}");
             Console.WriteLine($"3. {armory[2].type}, attack power: {armory[2].attackPower}");
 
-            if (Console.ReadLine().Contains("1"))
+            string userInput = Console.ReadLine();
+
+            if (userInput.Contains($"{armory[0].type}", StringComparison.OrdinalIgnoreCase))
             {
                 Weapon weapon = armory[0];
                 return weapon;
             }
-            else if (Console.ReadLine().Contains("2"))
+            else if (userInput.Contains($"{armory[1].type}", StringComparison.OrdinalIgnoreCase))
             {
                 Weapon weapon = armory[1];
                 return weapon;
             }
-            else if (Console.ReadLine().Contains("3"))
+            else if (userInput.Contains($"{armory[2].type}", StringComparison.OrdinalIgnoreCase))
             {
                 Weapon weapon = armory[2];
                 return weapon;
@@ -91,24 +97,26 @@ namespace RobotsVDinos
         }
         public Weapon ChooseWeapon3() 
         {
-            Console.WriteLine("Choose a weapon for your third robot by typing a number.");
+            Console.WriteLine("Choose a weapon for your third robot by typing ithe name of the weapon.");
             Console.WriteLine($"1. {armory[0].type}, attack power: {armory[0].attackPower}");
             Console.WriteLine($"2. {armory[1].type}, attack power: {armory[1].attackPower}");
             Console.WriteLine($"3. {armory[2].type}, attack power: {armory[2].attackPower}");
 
-            if (Console.ReadLine().Contains("1"))
+            string userInput = Console.ReadLine();
+
+            if (userInput.Contains($"{armory[0].type}", StringComparison.OrdinalIgnoreCase))
             {
                 Weapon weapon = armory[0];
                 return weapon;
                 
             }
-            else if (Console.ReadLine().Contains("2"))
+            else if (userInput.Contains($"{armory[1].type}", StringComparison.OrdinalIgnoreCase))
             {
                 Weapon weapon = armory[1];
                 return weapon;
                 
             }
-            else if (Console.ReadLine().Contains("3"))
+            else if (userInput.Contains($"{armory[2].type}", StringComparison.OrdinalIgnoreCase))
             {
                 Weapon weapon = armory[2];
                 return weapon;
