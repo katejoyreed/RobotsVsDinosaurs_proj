@@ -6,15 +6,14 @@ namespace RobotsVDinos
 {
     class Battlefield
     {   //member variables
-        public List<Herd> herd;
-        public List<Fleet> fleet;
+       
 
         public Battlefield()
         {
             
         }
 
-        public void RunBattlefield() 
+        public void RunBattlefield()
         {
             Herd battleHerd = new Herd();
             Dinosaur velociraptor = battleHerd.CreateDinosaur("Velociraptor", 100, 100, 20);
@@ -23,6 +22,7 @@ namespace RobotsVDinos
             battleHerd.PopulateHerd(velociraptor);
             battleHerd.PopulateHerd(allosaurus);
             battleHerd.PopulateHerd(carnotaurus);
+
 
             Weapon sword = new Weapon("sword", 25);
             Weapon slingshot = new Weapon("slingshot", 20);
@@ -36,41 +36,30 @@ namespace RobotsVDinos
             battleFleet.PopulateFleet(ironGiant);
             battleFleet.PopulateFleet(maschinenmensch);
 
-            while (gunter.hitPoints > 0 && velociraptor.hitPoints > 0)
+            Dinosaur currentDino = battleHerd.herd[0];
+            Robot currentRobot = battleFleet.fleet[0];
+
+            while (currentDino.hitPoints > 0 && currentRobot.hitPoints > 0) 
             {
-                gunter.RobotUserPrompt(velociraptor);
-                
-                velociraptor.DinosaurUserPrompt(gunter, velociraptor);
-                
+                currentDino.DinosaurUserPrompt(currentRobot, currentDino, battleFleet);
+                currentRobot.RobotUserPrompt(currentDino, battleHerd);
             }
 
-            battleFleet.RemoveFromFleet(gunter);
-            battleHerd.RemoveFromHerd(velociraptor);
-
-            if (gunter.hitPoints > 0) 
-            { 
-                while (gunter.hitPoints > 0 && allosaurus.hitPoints > 0) 
-                {
-                    gunter.RobotUserPrompt(allosaurus);
-                    allosaurus.DinosaurUserPrompt(gunter, allosaurus);
-                }
-
-                battleFleet.RemoveFromFleet(gunter);
-                battleHerd.RemoveFromHerd(allosaurus);
+            if (currentDino.hitPoints > 0)
+            {
+                Console.WriteLine($"{currentDino} wins this round!");
             }
-
             else 
             {
-                while (velociraptor.hitPoints < 0 && ironGiant.hitPoints < 0) 
-                {
-                    ironGiant.RobotUserPrompt(velociraptor);
-                    velociraptor.DinosaurUserPrompt(ironGiant, velociraptor);
-                }
-                battleFleet.RemoveFromFleet(ironGiant);
-                battleHerd.RemoveFromHerd(velociraptor);
+                Console.WriteLine($"{currentRobot} wins this round!");
             }
 
-
+            while (currentDino.hitPoints > 0 && currentRobot.hitPoints > 0)
+            {
+                currentDino.DinosaurUserPrompt(currentRobot, currentDino, battleFleet);
+                currentRobot.RobotUserPrompt(currentDino, battleHerd);
+            }
+            
 
             Console.ReadLine();
 

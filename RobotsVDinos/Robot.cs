@@ -36,11 +36,15 @@ namespace RobotsVDinos
             }
         }
 
-        public void TakeDamage(Dinosaur dinosaur) 
+        public void TakeDamage(Dinosaur dinosaur, Robot robot, Fleet fleet) 
         {
             hitPoints = (hitPoints - dinosaur.attackPower);
             Console.WriteLine($"{robotName} took {dinosaur.attackPower} damage!");
             Console.WriteLine($"{robotName} has {hitPoints} HP remaining!");
+            if (robot.hitPoints <= 0)
+            {
+                fleet.RemoveFromFleet(robot);
+            }
         }
 
         public void Recharge() 
@@ -49,7 +53,7 @@ namespace RobotsVDinos
         
         }
 
-        public void RobotUserPrompt(Dinosaur dinosaur) 
+        public void RobotUserPrompt(Dinosaur dinosaur, Herd herd) 
         {
             Console.WriteLine($"Would you like {robotName} to attack or recharge?");
             string answer = Console.ReadLine();
@@ -57,7 +61,7 @@ namespace RobotsVDinos
             if (answer.Equals("attack", StringComparison.OrdinalIgnoreCase)) 
             {
                 Attack(weapon);
-                dinosaur.TakeDamage(weapon);
+                dinosaur.TakeDamage(weapon, dinosaur, herd);
                 Console.WriteLine($"{robotName} has {powerLevel} power remaining!");
             }
 
@@ -72,7 +76,7 @@ namespace RobotsVDinos
                 {
                     Console.WriteLine($"{robotName} already has full power.");
                     Console.WriteLine("Please make a valid selction");
-                    RobotUserPrompt(dinosaur);
+                    RobotUserPrompt(dinosaur, herd);
                 }
                     
             }
@@ -80,7 +84,7 @@ namespace RobotsVDinos
             else 
             {
                 Console.WriteLine("Please make a valid selection");
-                RobotUserPrompt(dinosaur);
+                RobotUserPrompt(dinosaur, herd);
             }
         }
     }

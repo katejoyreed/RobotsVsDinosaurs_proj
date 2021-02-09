@@ -10,6 +10,7 @@ namespace RobotsVDinos
         public double hitPoints;
         public double energy;
         public double attackPower;
+        
 
         //ctor
         public Dinosaur(string type, double hitPoints, double energy, double attackPower)
@@ -37,11 +38,15 @@ namespace RobotsVDinos
             
         }
 
-        public void TakeDamage(Weapon weapon) 
+        public void TakeDamage(Weapon weapon, Dinosaur dinosaur, Herd herd) 
         {
             hitPoints = (hitPoints - weapon.attackPower);
             Console.WriteLine($"{type} took {weapon.attackPower} damage!");
             Console.WriteLine($"{type} has {hitPoints} HP remaining!");
+            if (dinosaur.hitPoints <= 0)
+            {
+                herd.RemoveFromHerd(dinosaur);
+            }
             
         }
 
@@ -50,7 +55,7 @@ namespace RobotsVDinos
             energy = (energy + 10);
         }
 
-        public void DinosaurUserPrompt(Robot robot, Dinosaur dinosaur) 
+        public void DinosaurUserPrompt(Robot robot, Dinosaur dinosaur, Fleet fleet) 
         {
 
             Console.WriteLine($"Would you like {type} to attack or rest?");
@@ -59,7 +64,7 @@ namespace RobotsVDinos
             if (answer.Equals("attack", StringComparison.OrdinalIgnoreCase))
             {
                 Attack();
-                robot.TakeDamage(dinosaur);
+                robot.TakeDamage(dinosaur, robot, fleet);
                 Console.WriteLine($"{dinosaur.type} has {energy} energy remaining");
             }
 
@@ -74,7 +79,7 @@ namespace RobotsVDinos
                 {
                     Console.WriteLine($"{type} already has full energy.");
                     Console.WriteLine("Please make a valid selction");
-                    DinosaurUserPrompt(robot, dinosaur);
+                    DinosaurUserPrompt(robot, dinosaur, fleet);
                 }
 
             }
@@ -82,7 +87,7 @@ namespace RobotsVDinos
             else
             {
                 Console.WriteLine("Please make a valid selection");
-                DinosaurUserPrompt(robot, dinosaur);
+                DinosaurUserPrompt(robot, dinosaur, fleet);
             }
         }
     }
