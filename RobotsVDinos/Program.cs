@@ -8,7 +8,7 @@ namespace RobotsVDinos
         {
             Battlefield battlefield = new Battlefield();
             battlefield.RunBattlefield();
-
+            Environment.Exit(0);
             
 
             

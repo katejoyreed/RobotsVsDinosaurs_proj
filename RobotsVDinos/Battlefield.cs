@@ -28,8 +28,9 @@ namespace RobotsVDinos
             while (battleHerd.herd.Count > 0 && battleFleet.fleet.Count > 0)
             {
                 battleHerd.herd[0].DinosaurUserPrompt(battleFleet.fleet[0], battleHerd.herd[0], battleFleet, battleHerd);
-                
+                Console.WriteLine();
                 battleFleet.fleet[0].RobotUserPrompt(battleHerd.herd[0], battleHerd, battleFleet.fleet[0], battleFleet);
+                Console.WriteLine();
             }
 
             
