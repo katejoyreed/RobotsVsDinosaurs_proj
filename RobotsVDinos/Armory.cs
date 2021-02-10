@@ -97,7 +97,7 @@ namespace RobotsVDinos
         }
         public Weapon ChooseWeapon3() 
         {
-            Console.WriteLine("Choose a weapon for your third robot by typing ithe name of the weapon.");
+            Console.WriteLine("Choose a weapon for your third robot by typing the name of the weapon.");
             Console.WriteLine($"1. {armory[0].type}, attack power: {armory[0].attackPower}");
             Console.WriteLine($"2. {armory[1].type}, attack power: {armory[1].attackPower}");
             Console.WriteLine($"3. {armory[2].type}, attack power: {armory[2].attackPower}");

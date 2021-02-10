@@ -68,8 +68,8 @@ namespace RobotsVDinos
                 if (answer.Equals("attack", StringComparison.OrdinalIgnoreCase))
                 {
                     Attack(weapon);
-                    dinosaur.TakeDamage(weapon, dinosaur, herd);
                     Console.WriteLine($"{robotName} has {powerLevel} power remaining!");
+                    dinosaur.TakeDamage(weapon, dinosaur, herd); 
                 }
                 else if (answer.Equals("recharge", StringComparison.OrdinalIgnoreCase))
                 {

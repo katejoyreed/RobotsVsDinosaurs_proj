@@ -36,7 +36,14 @@ namespace RobotsVDinos
             {
                 herd.Remove(dinosaur);
                 Console.WriteLine($"{dinosaur.type} has been removed from battle!");
+                if (herd.Count == 0) 
+                {
+                    Console.WriteLine("Robots win!");
+                }
+                
+                
 
+                
             }
         }
 

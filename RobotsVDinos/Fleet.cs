@@ -34,6 +34,10 @@ namespace RobotsVDinos
             {
                 fleet.Remove(robot);
                 Console.WriteLine($"{robot.robotName} has been removed from battle!");
+                if (fleet.Count == 0)
+                {
+                    Console.WriteLine("Dinosaurs win!");
+                }
             }
         }
 

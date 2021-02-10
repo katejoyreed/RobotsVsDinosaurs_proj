@@ -70,8 +70,8 @@ namespace RobotsVDinos
                 if (answer.Equals("attack", StringComparison.OrdinalIgnoreCase))
                 {
                     Attack();
-                    robot.TakeDamage(dinosaur, robot, fleet);
                     Console.WriteLine($"{dinosaur.type} has {energy} energy remaining");
+                    robot.TakeDamage(dinosaur, robot, fleet);
                 }
 
                 else if (answer.Equals("rest", StringComparison.OrdinalIgnoreCase))
